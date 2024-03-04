@@ -5,6 +5,7 @@ const productSchema = new Schema({
   title: {
     type: String,
     required: true,
+    unique: true,
   },
   description: {
     type: String,
@@ -42,6 +43,19 @@ const productSchema = new Schema({
   deleted: {
     type: Boolean,
     default: false,
+  },
+});
+
+// Virtual setup for _id
+const virtual = productSchema.virtual("id");
+virtual.get(function () {
+  return this._id;
+});
+productSchema.set("toJSON", {
+  virtuals: true,
+  versionKey: false,
+  transform: function (doc, ret) {
+    delete ret._id;
   },
 });
 
