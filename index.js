@@ -4,17 +4,16 @@ const mongoose = require("mongoose");
 const ProductRoute = require("./routes/ProductRoute");
 const BrandRoute = require("./routes/BrandRoute");
 const CategoryRoute = require("./routes/CategoryRoute");
+const cors = require("cors");
 
 // Middlewares
+server.use(cors());
 server.use(express.json());
 
-// All Routes 
+// All Routes
 server.use("/products", ProductRoute.router);
 server.use("/brands", BrandRoute.router);
 server.use("/category", CategoryRoute.router);
-
-
-
 
 main().catch((err) => console.log(err));
 
@@ -26,8 +25,6 @@ async function main() {
 server.get("/", (req, res) => {
   res.json({ status: "Success" });
 });
-
-
 
 const port = 8080;
 
