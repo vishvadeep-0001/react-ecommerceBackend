@@ -4,6 +4,9 @@ const mongoose = require("mongoose");
 const ProductRoute = require("./routes/ProductRoute");
 const BrandRoute = require("./routes/BrandRoute");
 const CategoryRoute = require("./routes/CategoryRoute");
+const UserRoute = require("./routes/UserRoute");
+const AuthRoute = require("./routes/AuthRoute");
+const CartRoute = require("./routes/CartRoute");
 const cors = require("cors");
 
 // Middlewares
@@ -14,6 +17,9 @@ server.use(express.json());
 server.use("/products", ProductRoute.router);
 server.use("/brands", BrandRoute.router);
 server.use("/category", CategoryRoute.router);
+server.use("/users", UserRoute.router);
+server.use("/auth", AuthRoute.router);
+server.use("/cart", CartRoute.router);
 
 main().catch((err) => console.log(err));
 
